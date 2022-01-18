@@ -1,0 +1,373 @@
+-Do the below programs in anonymous function & IIFE
+_____________________
+1Q)Print odd numbers in an array
+
+Answer:-
+
+(function (arr){
+    let odd=[];
+    for(let i in arr){
+        if(arr[i]%2!==0){
+            odd.push(arr[i]);
+        }
+    }
+    console.log(odd);
+})([1,2,3,4,5,6,7,8,9,10]);
+
+o/p:- [1, 3, 5, 7, 9]
+_________________________
+2Q)Convert all the strings to title caps in a string array
+
+Answer:- 
+
+let titleCase = function (str) {
+    str = str.toLowerCase().split(' ');
+    for (var i = 0; i < str.length; i++) {
+      str[i] = str[i].toUpperCase(); 
+    }
+    return str.join(' ');
+  }
+
+console.log(titleCase("hello.my name is kiran"));
+
+o/p:- HELLO.MY NAME IS KIRAN
+________________________
+3Q)Sum of all numbers in an array
+
+Answer:-  
+
+let res = function (arr) {
+    let sum=0;
+    for(let i in arr){
+        sum = sum + arr[i];
+    }
+    console.log(`Sum is ${sum}`);
+}
+
+console.log(res([5,5,10,10,5,8,9]));
+
+o/p:- Sum is 52
+___________________________
+4Q)Return all the prime numbers in an array
+
+Answer:-
+ 
+var isPrime = function (number) { 
+    if (number <= 1) { 
+        return false; 
+    } 
+    else 
+    { 
+        for (let i = 2; i < number; i++) { 
+            if (number % i == 0) 
+            { 
+                return false;
+            } 
+        } 
+    return true; 
+    } 
+};
+
+(function (arr) { 
+    let nums = [];
+    for(let i=0; i<arr.length; i++){
+        if(isPrime(arr[i])){
+            nums.push(arr[i]);
+        }   
+    }
+    console.log(nums);
+})([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
+
+o/p:- [2, 3, 5, 7, 11, 13]
+___________________________
+5Q)Return all the palindromes in an array
+
+Answer:- 
+ 
+____________________________
+6Q)Return median of two sorted arrays of same size
+
+Answer:- 
+
+// Getting input via STDIN
+const readline = require("readline");
+
+const inp = readline.createInterface({
+  input: process.stdin
+});
+
+const userInput = [];
+
+inp.on("line", (data) => {
+  userInput.push(data);
+});
+
+inp.on("close", () => {
+    
+    // split the input into array of elements
+   let  n=userInput[0].split(" ");
+   let  m=userInput[1].split(" ");
+   // convert string to numbers
+        n=n.map(item=>parseInt(item))
+        m=m.map(item=>parseInt(item))
+   // function to find  median of  the array of elements
+   let findmedian=function(x,y){
+       let totalarr=[...x,...y].sort((a,b)=>a-b)
+       let mp=Math.floor(totalarr.length/2)
+       if(totalarr.length%2==0){
+           return (totalarr[mp]+totalarr[mp-1])/2;
+       }
+       else
+       {
+           return totalarr[mp];
+       }
+   }
+   // print the median
+   console.log(findmedian(n,m));
+      
+});
+______________________________
+7Q)Remove duplicates from an array
+
+Answer:- 
+
+let res = function (chars) {
+    let uniqueChars = [];
+    chars.forEach((c) => {
+    if (!uniqueChars.includes(c)) {
+        uniqueChars.push(c);
+    }
+});
+
+console.log(uniqueChars);
+
+}
+
+console.log(res(['A', 'B', 'A', 'C', 'B', 'D', 'E', 'D']));
+
+o/p:- ['A', 'B', 'C', 'D', 'E']
+_____________________________
+8Q)Rotate an array by k times
+
+Answer:-
+
+// Getting input via STDIN
+const readline = require("readline");
+
+const inp = readline.createInterface({
+  input: process.stdin
+});
+
+const userInput = [];
+
+inp.on("line", (data) => {
+  userInput.push(data);
+});
+
+inp.on("close", () => {
+    
+    // split the input into array of elements
+   let  n=userInput[0].split(" ");
+        n=n.map(item=>parseInt(item))
+   let  k=parseInt(userInput[1])
+   // function to rotate the array of elements
+   let rotate=function(x){
+       for(i=0;i<k;i++)
+       {
+           x.unshift(x.pop())
+       }
+       return x.join(" ");
+   }
+   // print the array 
+   console.log(rotate(n));
+});
+--------------------------------------------------------------------------
+
+- Do the below programs in arrow functions :-
+
+1Q)Print odd numbers in an array
+
+Answer:-
+
+// Getting input via STDIN
+const readline = require("readline");
+
+const inp = readline.createInterface({
+  input: process.stdin
+});
+
+const userInput = [];
+
+inp.on("line", (data) => {
+  userInput.push(data);
+});
+
+inp.on("close", () => {
+    
+    // split the input into array of elements
+   let  n=userInput[0].split(" ");
+   // convert string elements to numbers
+   let numarr=n.map(item=>parseInt(item))
+   // check for odd numbers in an array 
+   let arr=numarr.filter(item=>item%2!=0)
+   // print the odd numbers in an array
+   console.log(arr.join(" "));
+    
+}); 
+________________________________
+2Q)Convert all the strings to title caps in a string array
+
+Answer:-
+
+// Getting input via STDIN
+const readline = require("readline");
+
+const inp = readline.createInterface({
+  input: process.stdin
+});
+
+const userInput = [];
+
+inp.on("line", (data) => {
+  userInput.push(data);
+});
+
+inp.on("close", () => {
+    
+    // split the input into array of elements
+   let  n=userInput[0].split(" ");
+   // function to Convert all the strings to title caps
+   let cap=function(){
+       // convert all strings to lower case
+       let r=n.map(item=>item.toLowerCase());
+       // convert first letter of all strings to upper case
+       let caps=r.map(item=>item.charAt(0).toUpperCase() + item.slice(1));
+       // print the desired string
+       console.log(caps.join(" "));
+   }
+   // invoke the function 
+   cap(n);
+   
+});
+________________________________
+3Q)Sum of all numbers in an array
+
+Answer:-
+
+// Getting input via STDIN
+const readline = require("readline");
+
+const inp = readline.createInterface({
+  input: process.stdin
+});
+
+const userInput = [];
+
+inp.on("line", (data) => {
+  userInput.push(data);
+});
+
+inp.on("close", () => {
+    
+    // split the input into array of elements
+   let  n=userInput[0].split(" ");
+   // convert string elements to number
+   let numarr=n.map(item=>parseInt(item))
+   // function to add the array elements
+   let sum=function(){
+       let s=numarr.reduce(
+           function(accumilator,item)
+           {
+               return accumilator+item;
+           }
+           ,0);
+       // print the sum of the array elements
+       console.log(s);
+   }
+   // invoke the function 
+   sum(n);
+});
+________________________________
+4Q)Return all the prime numbers in an array
+
+Answer:-
+
+// Getting input via STDIN
+const readline = require("readline");
+
+const inp = readline.createInterface({
+  input: process.stdin
+});
+
+const userInput = [];
+
+inp.on("line", (data) => {
+  userInput.push(data);
+});
+
+inp.on("close", () => {
+    
+    // split the input into array of elements
+   let  n=userInput[0].split(" ");
+   // convert string elements to number
+   let numarr=n.map(item=>parseInt(item))
+   // function to check for prime numbers in the array of elements
+   let prime=function(){
+       let s=numarr.filter((number) => {
+            for (var i = 2; i <= Math.sqrt(number); i++) {
+              if (number % i === 0) return false;
+             }
+              return true;
+        });
+       // print the prime numbers
+       console.log(s.join(" "));
+   }
+   // invoke the function 
+   prime(n)
+   
+});
+________________________________
+5Q)Return all the palindromes in an array
+
+Answer:-
+
+// Getting input via STDIN
+const readline = require("readline");
+
+const inp = readline.createInterface({
+  input: process.stdin
+});
+
+const userInput = [];
+
+inp.on("line", (data) => {
+  userInput.push(data);
+});
+
+inp.on("close", () => {
+    
+    // split the input into array of elements
+   let  n=userInput[0].split(" ");
+   // function to check for palindrome  in the array of elements
+   let findpoli=function(){
+       let Allpoli=[];
+       for(let i = 0;i<n.length;i++){
+           if(poli(n[i])){
+               Allpoli.push(n[i]);
+           }
+       }
+       return Allpoli;
+   }
+   // function to check wether the passed word is palindrome or not
+   var poli=function(y){
+       for(let i = 0;i<Math.floor(y.length/2);i++){
+           if(y[i]!==y[y.length-(i+1)]){
+             return false;
+           }
+       }
+       return true;
+    }
+    // print the palindromes by invoking the function
+   console.log(findpoli(n).join(" "));
+   
+});
